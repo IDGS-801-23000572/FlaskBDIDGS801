@@ -1,0 +1,29 @@
+{%macro datos(name, placeholder, type='text')%}
+    <div class="mb-3">
+        <label for="{{name}}" class="form-label">{{name}}</label>
+        <input type="{{type}}" class="form-control" id="{{name}}" name="{{name}}"placeholder="{{placeholder}}"></placeholder>
+    </div>
+{%endmacro%}
+
+{%macro campoNuevo(field)%}
+    <td>{{field.label}}</td>
+    <dd>{{field(**kwargs) | safe}}</dd>
+    {% if field.errors %}
+    {% for error in field.errors %}
+            <li style="color: red">{{error}}</li>
+    {%endfor%}
+    {% endif %}
+{%endmacro%}
+
+{%macro puntos(name, placeholder, type='number')%}
+    <div class="mb-3">
+        <label for="{{name}}" class="form-label">{{name}}</label>
+        <input type="{{type}}" class="form-control" id="{{name}}" name="{{name}}"placeholder="{{placeholder}}"></placeholder>
+    </div>
+{%endmacro%}
+
+{% macro cine(label, name, type='text', value='', read='') %}
+    <label class="form-label mb-0">{{ label }}</label>
+    <input type="{{ type }}" name="{{ name }}" value="{{ value }}" 
+           class="form-control form-control-sm" {{ read }}>
+{% endmacro %}

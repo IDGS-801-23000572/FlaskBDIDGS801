@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+    {%block container%}
+        <section class="bg-neutral-primary">
+            <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
+            <form class="max-w-sm mx-auto space-y-4">
+                <div>
+                    <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Nombre</label>
+                    <input type="text" id="nombre" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-2.5 py-2 shadow-xs placeholder:text-body" placeholder="" required />
+                </div>
+                <div>
+                    <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Apellido paterno</label>
+                    <input type="text" id="apaterno" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="" required />
+                </div>
+                <div>
+                    <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">email</label>
+                    <input type="email" id="email" class="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-3.5 py-3 shadow-xs placeholder:text-body" placeholder="" required />
+                </div>
+                <button type="submit" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Enviar</button>
+            </form>
+        </div>
+        </section>
+    {%endblock%}
