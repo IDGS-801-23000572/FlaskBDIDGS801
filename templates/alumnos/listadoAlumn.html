@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{%block container%}
+<div class="py-32 relative overflow-x-auto sm:rounded-lg">
+  <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
+      <a href="/agregarAlumnos" class="flex mb-5  bg-success-soft hover:bg-success-medium border border-success-subtle text-fg-success-strong text-xs font-medium px-6 py-4 rounded flex items-center gap-2">Nuevo Registro</a>
+      <table class="w-full text-sm text-left rtl:text-right text-body">
+          <thead class="bg-neutral-secondary-soft border-b border-default">
+              <tr>
+                  <th scope="col" class="px-6 py-3 font-medium">
+                      Nombre
+                  </th>
+                  <th scope="col" class="px-6 py-3 font-medium">
+                      Apellidos
+                  </th>
+                  <th scope="col" class="px-6 py-3 font-medium">
+                      Email
+                  </th>
+                  <th scope="col" class="px-6 py-3 font-medium">
+                      Telefono
+                  </th>
+                  <th scope="col" class="px-6 py-3 font-medium">
+                      Editar
+                  </th>
+                  <th scope="col" class="px-6 py-3 font-medium">
+                      Detalles
+                  </th>
+                  <th scope="col" class="px-6 py-3 font-medium">
+                      Eliminar
+                  </th>
+              </tr>
+          </thead>
+          <tbody>
+            {%for alumn in alumn%}
+              <tr class="odd:bg-neutral-primary even:bg-neutral-secondary-soft border-b border-default">
+                  <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
+                      {{alumn.nombre}}
+                  </th>
+                  <td class="px-6 py-4">
+                      {{alumn.apellidos}}
+                  </td>
+                  <td class="px-6 py-4">
+                      {{alumn.email}}
+                  </td>
+                  <td class="px-6 py-4">
+                      {{alumn.telefono}}
+                  </td>
+                  <td class="px-6 py-4">
+                    <a href="editarAlumnos?id={{alumn.id}}" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-heading rounded-base group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-black focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+                      <span class=" relative px-4 py-2.5 transition-all ease-in duration-75 bg-neutral-primary-soft rounded-base group-hover:bg-transparent group-hover:dark:bg-transparent leading-5">
+                        Editar
+                      </span>
+                    </a>  
+                  </td>
+                  <td class="px-6 py-4">
+                    <a href="detallesAlumnos?id={{alumn.id}}" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-heading rounded-base group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-black focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
+                      <span class=" relative px-4 py-2.5 transition-all ease-in duration-75 bg-neutral-primary-soft rounded-base group-hover:bg-transparent group-hover:dark:bg-transparent leading-5">
+                      Detalles
+                      </span>
+                    </a>  
+                  </td>
+                  <td class="px-6 py-4">
+                    <a href="eliminarAlumnos?id={{alumn.id}}" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-heading rounded-base group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-black dark:hover:text-heading focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400">
+                      <span class=" relative px-4 py-2.5 transition-all ease-in duration-75 bg-neutral-primary-soft rounded-base group-hover:bg-transparent group-hover:dark:bg-transparent leading-5">
+                        Eliminar
+                      </span>
+                    </a>    
+                  </td>
+              </tr>
+              {%endfor%}
+          </tbody>
+      </table>
+  </div>
+</div>
+    {%endblock%}
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+</body>
+
+</html>

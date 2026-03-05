@@ -2,7 +2,7 @@
     {%block container%}
     <div class = "py-32 relative overflow-x-auto sm:rounded-lg">
         <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
-            <form action="\alumnos" method="Post" class="max-w-sm mx-auto space-y-4">
+            <form action="\agregarAlumnos" method="Post" class="max-w-sm mx-auto space-y-4">
                 <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
                 <div>
                     <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Nombre</label>
@@ -21,7 +21,7 @@
                     <input type="text" id="telefono" name="telefono" class="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-3.5 py-3 shadow-xs placeholder:text-body" placeholder="" required />
                 </div>
                 <button type="submit" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Enviar</button>
-                <a href="index" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Cancelar</a>
+                <a href="listadoAlumn" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Cancelar</a>
             </form>
         </div>
     </div>

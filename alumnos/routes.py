@@ -1,33 +1,19 @@
 from flask import Flask, redirect, render_template, request, url_for
-from flask import flash
-from flask_wtf.csrf import CSRFProtect
+
 from flask import g
-from maestros.routes import maestros
-from alumnos.routes import alumnos
-from config import DevelopmentConfig
+from . import alumnos
 import forms
 from models import db, Alumnos
 
-from flask_migrate import Migrate
 
+@alumnos.route('/listadoAlumn')
+def listadoAlumn():
+	create_formn=forms.UserForm2(request.form)
+	alumnos=Alumnos.query.all()
+	return render_template("/alumnos/listadoAlumn.html", form=create_formn, alumn=alumnos)
 
-app = Flask(__name__)
-app.config.from_object(DevelopmentConfig)
-app.register_blueprint(maestros)
-app.register_blueprint(alumnos)
-csrf = CSRFProtect()
-db.init_app(app)
-migrate = Migrate(app, db)
-
-
-@app.route("/")
-@app.route("/index")
-def index():
-	return render_template("index.html")
-
-""""
-@app.route("/alumnos", methods=['GET','POST'])
-def alumnos():
+@alumnos.route("/agregarAlumnos", methods=['GET','POST'])
+def agergarAlumnos():
 	create_form=forms.UserForm2(request.form)
 	if request.method== 'POST':
 		alum=Alumnos(nombre=create_form.nombre.data,
@@ -36,10 +22,10 @@ def alumnos():
 					telefono=create_form.telefono.data)
 		db.session.add(alum)
 		db.session.commit()
-		return redirect(url_for("index"))
-	return render_template("alumnos.html")
+		return redirect(url_for("alumnos.listadoAlumn"))
+	return render_template("alumnos/agregarAlumnos.html", form=create_form)
 
-@app.route("/detalles")
+@alumnos.route("/detallesAlumnos")
 def detalles():
 	create_form=forms.UserForm2(request.form)
 	if request.method=='GET':
@@ -50,9 +36,9 @@ def detalles():
 		apellidos=alum1.apellidos
 		email=alum1.email
 		telefono = alum1.telefono
-	return render_template("detalles.html",id=id, nombre=nombre, apellidos=apellidos, email=email, telefono = telefono)
+	return render_template("alumnos/detallesAlumnos.html",id=id, nombre=nombre, apellidos=apellidos, email=email, telefono = telefono)
 
-@app.route("/editar", methods=['GET','POST'])
+@alumnos.route("/editarAlumnos", methods=['GET','POST'])
 def editar():
 	create_form=forms.UserForm2(request.form)
 	if request.method=='GET':
@@ -73,10 +59,10 @@ def editar():
 		alum1.telefono=create_form.telefono.data
 		db.session.add(alum1)
 		db.session.commit()
-		return redirect(url_for("index"))
-	return render_template("editar.html", form=create_form)
+		return redirect(url_for("alumnos.listadoAlumn"))
+	return render_template("alumnos/editarAlumnos.html", form=create_form)
 
-@app.route("/eliminar", methods=['GET','POST'])
+@alumnos.route("/eliminarAlumnos", methods=['GET','POST'])
 def eliminar():
 	create_form=forms.UserForm2(request.form)
 	if request.method == 'GET':
@@ -88,26 +74,12 @@ def eliminar():
 			create_form.apellidos.data = alum1.apellidos
 			create_form.email.data = alum1.email
 			create_form.telefono.data = alum1.telefono
-			return render_template("eliminar.html", form=create_form)
-		
+			return render_template("alumnos/eliminarAlumnos.html", form=create_form)
 	if request.method == 'POST':
 		id = create_form.id.data
 		alum  = db.session.query(Alumnos).filter(Alumnos.id == id).first()
 		if alum:
 			db.session.delete(alum)
 			db.session.commit()
-		return redirect(url_for('index'))
-	
-	return render_template("eliminar.html", form=create_form)
-		
-"""	
-
-@app.errorhandler(404)
-def page_not_found(e):
-	return render_template('404.html')
-
-if __name__ == '__main__':
-	csrf.init_app(app)
-	with app.app_context():
-		db.create_all()
-	app.run(debug=True)
+		return redirect(url_for('alumnos.listadoAlumn'))
+	return render_template("alumnos/eliminarAlumnos.html", form=create_form)
