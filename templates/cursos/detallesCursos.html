@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block container %}
+<div class="py-32 flex justify-center overflow-x-auto sm:rounded-lg">
+    <a href="{{ url_for('cursos.listadoCursos') }}" class="flex flex-col items-center bg-neutral-primary-soft p-6 border border-default rounded-base shadow-xs md:flex-row md:max-w-xl">
+        
+        <img class="object-cover w-full rounded-base h-64 md:h-auto md:w-48 mb-4 md:mb-0" src="{{ url_for('static', filename='img/oki.jpg') }}" alt="Imagen del curso">
+        
+        <div class="flex flex-col justify-between md:p-4 leading-normal text-left">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-heading">
+                Nombre: <span class="font-normal">{{ nombre }}</span>
+            </h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-heading">
+                Descripción: <span class="font-normal">{{ descripcion }}</span>
+            </h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-heading">
+                Profesor: <span class="font-normal">{{ maestro_nombre }}</span>
+            </h5>
+        </div>
+    </a>
+</div>
+{% endblock %}  

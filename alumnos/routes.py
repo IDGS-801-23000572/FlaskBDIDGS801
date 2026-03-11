@@ -36,7 +36,8 @@ def detalles():
 		apellidos=alum1.apellidos
 		email=alum1.email
 		telefono = alum1.telefono
-	return render_template("alumnos/detallesAlumnos.html",id=id, nombre=nombre, apellidos=apellidos, email=email, telefono = telefono)
+		cursos=alum1.cursos
+	return render_template("alumnos/detallesAlumnos.html",id=id, nombre=nombre, apellidos=apellidos, email=email, telefono = telefono, cursos=cursos)
 
 @alumnos.route("/editarAlumnos", methods=['GET','POST'])
 def editar():

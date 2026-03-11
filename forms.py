@@ -1,5 +1,5 @@
 from wtforms import Form
-from wtforms import StringField, IntegerField, PasswordField, FloatField
+from wtforms import StringField, IntegerField, PasswordField, FloatField, SelectField
 from wtforms import EmailField
 from wtforms import validators
 
@@ -39,4 +39,16 @@ class UserForm3(Form):
         validators.DataRequired(message="El correo es requerido"),
         validators.Email( message="Ingrese un correo válido"),
     ])
-    
+
+class UserForm4(Form):
+    id=IntegerField('id',
+    [validators.NumberRange(min=1, max=20, message="valor no valido")])
+    nombre=StringField('nombre',[
+        validators.DataRequired(message="El nombre es requerido"),
+        validators.length(min=4, max=20, message="Requiere minimo de 4 y maximo de 20"),
+    ])
+    descripcion=StringField('descripcion',[
+        validators.DataRequired(message="La descripcion es requerido"),
+    ])
+    maestro_id=IntegerField('maestro_id',
+    [validators.DataRequired(message="valor requerido")])

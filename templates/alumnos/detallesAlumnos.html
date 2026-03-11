@@ -8,6 +8,9 @@
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-heading">Apellidos : {{apellidos}}</h5>
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-heading">Correo : {{email}}</h5>
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-heading">Telefono : {{telefono}}</h5>
+                {%for curso in cursos%}
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-heading">Curso : {{curso.nombre}}</h5>
+                {%endfor%}
             </div>
         </a>
     </div>

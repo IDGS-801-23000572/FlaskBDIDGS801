@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block container %}
+{% import "_macros.html" as macros %}
+<div class="py-32 relative overflow-x-auto sm:rounded-lg">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
+        <h2 class="text-2xl font-bold text-heading mb-6">Editar Curso</h2>
+        
+        <form action="{{ url_for('cursos.editar') }}" method="POST" class="max-w-sm mx-auto space-y-4">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div class="space-y-1 text-left">
+                {{ macros.campoNuevo(form.id, readonly=True, class="block w-full px-4 py-3 text-gray-500 bg-gray-100 border border-gray-200 rounded-lg outline-none cursor-not-allowed") }}
+            </div>
+            <div class="space-y-1 text-left">
+                {{ macros.campoNuevo(form.nombre, class="block w-full px-4 py-3 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none") }}
+            </div>
+
+            <div class="space-y-1 text-left">
+                {{ macros.campoNuevo(form.descripcion, class="block w-full px-4 py-3 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none") }}
+            </div>
+
+            <div class="space-y-1 text-left">
+                {{ macros.campoNuevo(form.maestro_id, class="block w-full px-4 py-3 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none") }}
+                <p class="text-xs text-gray-500 mt-1 italic">Actualmente asignado a: {{ maestro_actual }}</p>
+            </div>
+
+            <div class="flex justify-center space-x-4 pt-4">
+                <button type="submit" class="text-white bg-brand hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium font-medium rounded-base text-sm px-6 py-2.5 transition duration-200">
+                    Guardar
+                </button>
+                <a href="{{ url_for('cursos.listadoCursos') }}" class="text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 font-medium rounded-base text-sm px-6 py-2.5 transition duration-200">
+                    Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

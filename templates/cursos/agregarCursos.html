@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block container %}
+<div class="py-32 relative overflow-x-auto sm:rounded-lg">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
+        <form action="{{ url_for('cursos.agregarCursos') }}" method="POST" class="max-w-sm mx-auto space-y-4">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            
+            <div>
+                <label for="nombre" class="block mb-2.5 text-sm font-medium text-heading">Nombre del Curso</label>
+                <input type="text" id="nombre" name="nombre" 
+                    class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-2.5 py-2 shadow-xs placeholder:text-body" 
+                    placeholder="Ej. Matemáticas" required />
+            </div>
+
+            <div>
+                <label for="descripcion" class="block mb-2.5 text-sm font-medium text-heading">Descripción</label>
+                <input type="text" id="descripcion" name="descripcion" 
+                    class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" 
+                    placeholder="Descripción breve" required />
+            </div>
+
+            <div>
+                <label for="maestro_id" class="block mb-2.5 text-sm font-medium text-heading">Matricula del Maestro</label>
+                <input type="number" id="maestro_id" name="maestro_id" 
+                    class="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-3.5 py-3 shadow-xs placeholder:text-body" 
+                    placeholder="Matrícula del maestro" required />
+            </div>
+
+            <div class="flex justify-center space-x-4 pt-4">
+                <button type="submit" 
+                    class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                    Guardar Curso
+                </button>
+                
+                <a href="{{ url_for('cursos.listadoCursos') }}" 
+                    class="text-white bg-gray-500 box-border border border-transparent hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                    Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
